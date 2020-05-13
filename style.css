@@ -1,13 +1,15 @@
-
 body {
     background-color: bisque;
     background-image: url(img/fondo2.jpg);
+    font-family: 'Libre Baskerville', serif;
+    text-align: center;
+    
 }
 
 .texts {
     font-size: 40px;
-    text-align: center;
 }
+    
 
 .scores {
     width: 900px;
@@ -19,7 +21,6 @@ body {
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     background-color: brown;
     background-image: url("img/scores.jpg");
-    font-family: arial;
     font-size: 30px;
     color: black;
 }
@@ -30,20 +31,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#hiscore {
-    position: absolute;
-    left: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#actualScore {
-    position: absolute;
-    right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 
@@ -57,10 +44,7 @@ body {
     background-image: url(img/panel1.jpg);
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     border: 5px solid #312507;
-
-    
 }
-
 
 .player_panel {
     width: 180px;
@@ -79,6 +63,33 @@ body {
     margin-top: 30px;
 }
 
+.hero {
+    font-size: 22px;
+}
+
+#actualScore {
+    position: relative;
+    font-size: 50px;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.player_panel p {
+    position: relative;
+    top: 5px;
+    font-size: 15px;
+}
+
+#hiscore {
+    font-size: 15px;
+    position: relative;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
 .arena {
     width: 500px;
     height: 400px;
@@ -90,19 +101,25 @@ body {
     background-color: rgba(243,243,243,0.6);
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     border: 5px solid #312507;
-
 }
-
 
 .arena div img {
     width: 120px;
     margin: 21px;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 #message {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 55px;
+    color: darkred;
     text-align: center;
-    font-family: Arial;
+    position: relative;
+    top: 20px;
+}
+
+#any_key {
+    text-align: center;
     font-size: 25px;
     position: relative;
     top: 30px;
@@ -118,6 +135,22 @@ body {
     background-color: rgba(243,243,243,0.6);
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.3);
     border: 5px solid #312507;
+}
+
+.info_panel p {
+    font-size: 20px;
+    padding: 10px;
+}
+
+#icons {
+    position: absolute;
+    bottom: 10px;
+    font-size: 10px;
+}
+
+#icons a {
+    text-decoration: none;
+    color: darkslategrey;
 }
 
 .score {

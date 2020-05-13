@@ -5,6 +5,8 @@ var hiscore = 0;
 document.addEventListener('keypress', init);
 
 function game() {
+    document.getElementById('message').style.visibility = "hidden";
+    document.getElementById('message').style.color = "darkred";
     document.removeEventListener('keypress', init);
     redraw();
     
@@ -29,7 +31,7 @@ function game() {
         if (flower === true) {
             document.getElementById('bandit-' + activeBandit).src = 'img/bandit' + activeBandit + '-rip.png';
             document.getElementById('sheriff').src = 'img/sheriff-shame.png';
-            document.getElementById('message').style.display = 'block';
+            document.getElementById('message').style.visibility = 'visible';
             document.getElementById('message').textContent = 'Shame on you!';
             if (totalScore > hiscore) {
                 hiscore = totalScore;
@@ -56,9 +58,12 @@ function game() {
         document.removeEventListener('keypress', validKey);
         if (flower === true) {
             flower = false;
+            document.getElementById('message').style.visibility = 'visible';
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').textContent = 'Nice!';
             window.setTimeout(game, pause);
         } else {
-            document.getElementById('message').style.display = 'block';
+            document.getElementById('message').style.visibility = 'visible';
             document.getElementById('message').textContent = 'Too slow!';
             document.getElementById('sheriff').src = 'img/sheriff-rip.png';
             document.getElementById('bandit-' + activeBandit).src = 'img/bandit' + activeBandit + '-shoot.png';
@@ -66,7 +71,6 @@ function game() {
                 hiscore = totalScore;
             };
             document.getElementById('hiscore').textContent = 'HI Score: ' + hiscore;
-            //document.addEventListener('keypress', init);
             window.setTimeout(anyKey,1000);
         };
     };
@@ -86,12 +90,9 @@ function init(event) {
     totalScore = 0;
     pause = 1500;
     flower = false;
-    //document.getElementById('message').textContent = 'PRESS ANY KEY';
-    document.getElementById('message').style.display = 'none';
-    document.getElementById('actualScore').textContent = 'Score: 0';
-    //document.removeEventListener('keypress', init);
-    
-    //window.setTimeout(game, 2000);
+    document.getElementById('message').style.visibility = 'hidden';
+    document.getElementById('any_key').style.visibility = 'hidden';
+    document.getElementById('actualScore').textContent = '0';    
     game();
 };
 
@@ -138,15 +139,21 @@ function checkShot(choice) {
         document.getElementById('bandit-' + activeBandit).src = 'img/bandit' + activeBandit + '-rip.png';
         document.getElementById('sheriff').src = 'img/sheriff-smile.png';
         
-        if (speedOfShot < 300) {
+        if (speedOfShot < 330) {
             totalScore = totalScore + 40;
-        } else if (speedOfShot < 400) {
+            document.getElementById('message').style.visibility = 'visible';
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').textContent = 'Excellent!';
+        } else if (speedOfShot < 360) {
             totalScore = totalScore + 20;
+            document.getElementById('message').style.visibility = 'visible';
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').textContent = 'Great!';
         } else {
                 totalScore = totalScore + 10;
         };
         
-        document.getElementById('actualScore').textContent = 'Score: ' + totalScore;
+        document.getElementById('actualScore').textContent = totalScore;
         timeLimit = timeLimit - 20;
         pause = pause - 40;
         round++;
@@ -172,7 +179,7 @@ function dead() {
     document.getElementById('sheriff').src = 'img/sheriff-rip.png';
     document.getElementById('bandit-' + activeBandit).src = 'img/bandit' + activeBandit + '-shoot.png';
     //document.getElementById('message').style.display = 'block';
-    document.getElementById('message').style.display = 'block';
+    document.getElementById('message').style.visibility = 'visible';
     document.getElementById('message').textContent = 'You are dead!';
     if (totalScore > hiscore) {
         hiscore = totalScore;
@@ -185,7 +192,6 @@ function dead() {
 
 // Any Key
 function anyKey() {
-    document.getElementById('message').style.display = 'block';
-    document.getElementById('message').textContent = 'PRESS ANY KEY';
+    document.getElementById('any_key').style.visibility = 'visible';
     document.addEventListener('keypress', init);
 }
